@@ -1,30 +1,18 @@
 package com.isep.hpah.core;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-public class Pet {
+public enum Pet {
+    OWL,
+    CAT,
+    TOAD,
+    RAT;
 
-    private List<String> names;
+    private static final Random ran = new Random();
 
-    public Pet() {
-        this.names = new ArrayList<>();
-        this.names.add("Owl");
-        this.names.add("Cat");
-        this.names.add("Rat");
-        this.names.add("Bat");
-        this.names.add("Dog");
-        this.names.add("Fox");
-        this.names.add("Cow");
-        this.names.add("Pig");
-        this.names.add("Hen");
-        this.names.add("Emu");
-    }
-
-    public String getRandomName() {
-        Random random = new Random();
-        int index = random.nextInt(names.size());
-        return names.get(index);
+    public static Pet randomPet(){
+        Pet[] pets = values();
+        Pet PetName = pets[ran.nextInt(pets.length)];
+        System.out.println("Votre animal est : " + PetName);
+        return PetName;
     }
 }

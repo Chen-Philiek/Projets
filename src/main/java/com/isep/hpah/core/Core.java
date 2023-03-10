@@ -1,18 +1,22 @@
 package com.isep.hpah.core;
 
-public class Core {
-    private String name;
+import java.util.Random;
 
-    public Core(String name) {
-        this.name = name;
-    }
+public enum Core {
+    PHOENIX_FEATHER,
+    DRAGON_HEARTSTRING,
+    UNICORN_HAIR,
+    VEELA_HAIR;
+    private static final Random ran = new Random();
 
-    public String getName() {
-        return name;
-    }
-    public int getPower() {
-        return (int) (Math.random() * 20) + 1;
+    public static Core randomCore(){
+        Core[] cores = values();
+        Core coreName = cores[ran.nextInt(cores.length)];
+        System.out.println("Vous avez une baguette magique avec ce coeur la  : " + coreName);
+        return coreName;
     }
 
 
 }
+
+

@@ -1,19 +1,18 @@
 package com.isep.hpah.core;
-
+/*
 
 public class Potion {
-
     private String name;
+    private String description;
+    private List<Ingredient> ingredients;
 
-    public Potion(String name) {
+    public Potion(String name, String description, List<Ingredient> ingredients) {
         this.name = name;
+        this.description = description;
+        this.ingredients = ingredients;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    // Getters et setters pour les attributs
 }
+
+ */

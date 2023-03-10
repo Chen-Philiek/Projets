@@ -1,18 +1,19 @@
 package com.isep.hpah.core;
+import java.util.Random;
+public enum House {
+    GRYFFINDOR,
+    HUFFLEPUFF,
+    RAVENCLAW,
+    SLYTHERIN;
 
-public class House {
-    public static final House GRYFFINDOR = new House("Gryffindor");
-    public static final House HUFFLEPUFF = new House("hufflepuff");
-    public static final House RAVENCLAW = new House("ravenclaw");
-    public static final House SLYTHERIN = new House("Slytherin");
+    private static final Random ran = new Random();
 
-    private String name;
-
-    public House(String name) {
-        this.name = name;
+    public static House randomHouse(){
+        House[] houses = values();
+        House HouseName = houses[ran.nextInt(houses.length)];
+        System.out.println("Votre maison est : " + HouseName);
+        return HouseName;
     }
 
-    public String getName() {
-        return name;
-    }
+
 }

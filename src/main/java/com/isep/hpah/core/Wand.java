@@ -1,36 +1,47 @@
 package com.isep.hpah.core;
+import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import java.util.Random;
+import java.util.Scanner;
 
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
 public class Wand {
-
     private Core core;
     private int size;
 
-    public Wand(Core core, int size) {
-        this.core = core;
-        this.size = size;
-    }
-    public String getDescription() {
-        return core.getName() + " de taille " + size + " cm";
+    public static void Tot(){
+        Wand.randomWand();
+        Wait.wait(2000);
+
     }
 
-    public int getPower() {
-        // calculer la puissance de la baguette en fonction du noyau et de la taille
-        return core.getPower() * size;
+    private static final Random ran = new Random();
+
+    public static Wand randomWand() {
+        Wand wand = new Wand();
+        wand.setCore(Core.randomCore());
+        return wand;
     }
 
-    public Core getCore() {
-        return core;
+
+
+    public static int randomWandSize() {
+
+        System.out.println("Votre baguette magique à une taille de : " + randomSize());
+
+
+
     }
 
-    public void setCore(Core core) {
-        this.core = core;
+    private static int randomSize() {
+
     }
 
-    public int getSize() {
-        return size;
-    }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
 }
+
+
