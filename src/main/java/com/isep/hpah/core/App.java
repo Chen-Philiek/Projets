@@ -15,8 +15,10 @@ public class App {
         // Générer un animal aléatoire
         House.randomHouse();
         Pet.randomPet();
-        Wand.randomWand();
-        Wand.randomWandSize();
+        Wand.Tot();
+        Character.Tota();
+        Potion.ListPotion();
+        Spell.listSpells();
 
 
 

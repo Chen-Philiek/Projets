@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class Wand {
     private Core core;
     private int size;
-
+// a se servir pour d'autre fonctions
     public static void Tot(){
         Wand.randomWand();
-        Wait.wait(2000);
+        Wand.randomWandSize();
 
     }
 
@@ -26,19 +26,15 @@ public class Wand {
         wand.setCore(Core.randomCore());
         return wand;
     }
-
-
-
     public static int randomWandSize() {
 
         System.out.println("Votre baguette magique à une taille de : " + randomSize());
-
-
-
+        return 0;
     }
 
     private static int randomSize() {
-
+    int size = (int) (Math.random() * 21) + 10 ;
+        return size;
     }
 
 
