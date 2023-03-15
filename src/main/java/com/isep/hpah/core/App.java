@@ -20,6 +20,16 @@ public class App {
         Potion.ListPotion();
         Spell.listSpells();
 
+        Wizard wizard = new Wizard(10, 100, true);
+        // Création de l'ennemi
+        Enemy enemy = new Enemy("Troll", 30, 7);
+        // Création du combat
+        Combat combat = new Combat(wizard, enemy, 1);
+
+        // Lancement du combat
+        combat.start();
+
+
 
 
 

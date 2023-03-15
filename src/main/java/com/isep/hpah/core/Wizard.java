@@ -11,8 +11,22 @@ public class Wizard extends Character{
     @Getter @Setter private List<Potion> potions;
     @Getter @Setter private List<Spell> knownSpells;
 
+    public Wizard(int i, int i1, boolean b) {
+        super();
+    }
 
 
+    public void heal(double v) {
+
+    }
+
+    public void increaseAttack(double v) {
+
+    }
+
+    public void attack(Enemy enemy) {
+
+    }
 }
 
 

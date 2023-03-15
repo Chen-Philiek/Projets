@@ -9,6 +9,10 @@ public class Enemy extends AbstractEnemy{
     private String name;
     private int health;
     private int attack;
+
+    public void attack(Wizard wizard) {
+
+    }
 }
 
 @Getter @AllArgsConstructor

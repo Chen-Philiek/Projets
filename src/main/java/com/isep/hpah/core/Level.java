@@ -14,4 +14,10 @@ public enum Level {
     private final int enemyHealth;
     private final int enemyAttack;
     private final String bossName;
+
+    public static String getEnemyName(int level) {
+
+
+        return null;
+    }
 }
