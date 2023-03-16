@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class App {
 
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -12,29 +13,22 @@ public class App {
         System.out.print("Entrez votre nom: ");
         String playerName = scanner.nextLine();
 
+        Wizard wizard = new Wizard(playerName, House.getHouse(), Wand.getWand());
         // Générer un animal aléatoire
-        House.randomHouse();
+
+        Wand.randomWandSize();
         Pet.randomPet();
-        Wand.Tot();
         Character.Tota();
         Potion.ListPotion();
         Spell.listSpells();
+        // Créer une instance de la classe Combat
 
-        Wizard wizard = new Wizard(10, 100, true);
-        // Création de l'ennemi
-        Enemy enemy = new Enemy("Troll", 30, 7);
-        // Création du combat
-        Combat combat = new Combat(wizard, enemy, 1);
 
-        // Lancement du combat
+        AbstractEnemy enemy = new Enemy("Orc", 10,40,EnemyType.ORC);
+        AbstractEnemy boss = new Boss("Voldemort",20,60,BossLevel.VOLEDEMORT);
+        Combat combat = new Combat(wizard, enemy, boss);
+
+        // Lancer le combat
         combat.start();
-
-
-
-
-
-
-
-
     }
 }

@@ -11,9 +11,10 @@ public class Wizard extends Character{
     @Getter @Setter private List<Potion> potions;
     @Getter @Setter private List<Spell> knownSpells;
 
-    public Wizard(int i, int i1, boolean b) {
+    public Wizard(String i, House house, Wand wand) {
         super();
     }
+
 
 
     public void heal(double v) {

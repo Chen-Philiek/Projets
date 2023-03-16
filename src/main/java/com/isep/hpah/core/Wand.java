@@ -36,7 +36,9 @@ public class Wand {
     int size = (int) (Math.random() * 21) + 10 ;
         return size;
     }
-
+    public static Wand getWand() {
+        return Wand.randomWand();
+    }
 
 }
 

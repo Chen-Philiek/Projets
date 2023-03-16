@@ -1,7 +1,7 @@
 package com.isep.hpah.core;
 
-public enum BossLevel {
-    VOLEDEMORT,
+public enum EnemyType {
+    ORC,
     TROLL,
     DRAGON;
 

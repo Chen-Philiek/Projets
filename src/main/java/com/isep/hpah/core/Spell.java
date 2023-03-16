@@ -39,29 +39,41 @@ public class Spell {
                 chosenSpell = SpellList.Expelliarmus;
                 break;
             case 2:
-                chosenSpell = SpellList.AvadaKedavra;
-                break;
-            case 3:
                 chosenSpell = SpellList.Sectumsempra;
                 break;
-            case 4:
+            case 3:
                 chosenSpell = SpellList.Incendio;
                 break;
-            case 5:
-                chosenSpell = SpellList.Impedimenta;
-                break;
+
         }
         System.out.println("You chose the spell " + chosenSpell.getName());
         return chosenSpell;
     }
+
+
+    public int getDamage() {
+        int damage = 0;
+        switch (this.name) {
+            case "Expelliarmus":
+                damage = 10;
+                break;
+            case "Sectumsempra":
+                damage = 20;
+                break;
+            case "Incendio":
+                damage = 15;
+                break;
+        }
+        return damage;
+    }
+
 }
 
 enum SpellList {
     Expelliarmus("Expelliarmus", "Disarms opponent"),
-    AvadaKedavra("Avada Kedavra", "Kills opponent"),
     Sectumsempra("Sectumsempra", "Causes severe wounds"),
-    Incendio("Incendio", "Creates fire"),
-    Impedimenta("Impedimenta", "Slows opponent");
+    Incendio("Incendio", "Creates fire");
+
 
     @Getter
     private final String name;

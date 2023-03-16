@@ -1,24 +1,18 @@
 package com.isep.hpah.core;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+public class Enemy extends AbstractEnemy {
+    private EnemyType type;
 
-@Getter @Setter @AllArgsConstructor
-public class Enemy extends AbstractEnemy{
-    private String name;
-    private int health;
-    private int attack;
+    public Enemy(String name, int damage, int health, EnemyType type) {
+        super(name, damage, health);
+        this.type = type;
+    }
 
-    public void attack(Wizard wizard) {
 
+
+
+    @Override
+    public String toString() {
+        return "Enemy [type=" + type + ", name=" + getName() + ", damage=" + getDamage() + ", health=" + getHealth() + "]";
     }
 }
-
-@Getter @AllArgsConstructor
-class Boss {
-    private String name;
-    private int health;
-    private int attack;
-}
-

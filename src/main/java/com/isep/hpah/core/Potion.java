@@ -7,10 +7,10 @@ import lombok.Setter;
 
 import java.util.Scanner;
 
-
-
-
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Potion {
     private String name;
     private String description;
@@ -34,7 +34,7 @@ public class Potion {
             count += 1;
         }
         int numberPotion = scanner.nextInt();
-        PotionList ChoosedPotion ;
+        PotionList ChoosedPotion;
         switch (numberPotion) {
             case 1:
                 ChoosedPotion = PotionList.Powerup;
@@ -47,11 +47,21 @@ public class Potion {
                 break;
             default:
                 throw new IllegalArgumentException("ee");
-
-
         }
         System.out.println("Vous venez d'obtenir la potion " + ChoosedPotion);
         return ChoosedPotion;
+    }
 
+    public double getHealAmount() {
+        switch (this.getName()) {
+            case "Powerup":
+                return 50.0;
+            case "Speedup":
+                return 30.0;
+            case "Defenseup":
+                return 20.0;
+            default:
+                return 0.0;
+        }
     }
 }

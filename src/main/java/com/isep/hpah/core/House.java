@@ -16,4 +16,7 @@ public enum House {
     }
 
 
+    public static House getHouse() {
+        return House.randomHouse();
+    }
 }
