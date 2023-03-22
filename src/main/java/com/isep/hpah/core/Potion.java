@@ -22,6 +22,7 @@ public class Potion {
     }
 
     private void setPotion(PotionList choosePotion) {
+        this.name = choosePotion.getName();
     }
 
     private static PotionList ChoosePotion() {
@@ -34,7 +35,7 @@ public class Potion {
             count += 1;
         }
         int numberPotion = scanner.nextInt();
-        PotionList ChoosedPotion;
+        PotionList ChoosedPotion =null;
         switch (numberPotion) {
             case 1:
                 ChoosedPotion = PotionList.Powerup;
@@ -46,7 +47,7 @@ public class Potion {
                 ChoosedPotion = PotionList.Defenseup;
                 break;
             default:
-                throw new IllegalArgumentException("ee");
+                Potion.ChoosePotion();
         }
         System.out.println("Vous venez d'obtenir la potion " + ChoosedPotion);
         return ChoosedPotion;

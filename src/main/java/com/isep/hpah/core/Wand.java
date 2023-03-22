@@ -28,7 +28,7 @@ public class Wand {
     }
     public static int randomWandSize() {
 
-        System.out.println("Votre baguette magique à une taille de : " + randomSize());
+        System.out.println("Votre baguette magique à une taille de : " + randomSize() + "cm");
         return 0;
     }
 

@@ -16,23 +16,15 @@ public abstract class AbstractEnemy extends Character {
         this.setAlive(true);
     }
 
-    public String attack(Character target) {
-        int damage = this.damage;
-        target.setHealth(target.getHealth() - damage);
-        System.out.println(this.getName() + " attaque " + target.getName() + " et lui inflige " + damage + " points de dégâts !");
-        if (target.getHealth() <= 0) {
-            target.setAlive(false);
-            System.out.println(target.getName() + " est mort !");
-        }
-        return null;
-    }
 
     public void takeDamage(int damage) {
         this.health -= damage;
-        System.out.println(this.getName() + " prend " + damage + " points de dégâts !");
+        System.out.println("Le " + this.getName() + " prend " + damage + " points de dégâts !");
+        System.out.println("Le " + this.getName() + " n'a plus que : " + health + " points de vies !" );
         if (this.health <= 0) {
             this.setAlive(false);
             System.out.println(this.getName() + " est mort !");
         }
     }
+
 }

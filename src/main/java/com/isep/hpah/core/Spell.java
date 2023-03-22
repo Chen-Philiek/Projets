@@ -1,60 +1,60 @@
 package com.isep.hpah.core;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Scanner;
-
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Spell {
     private String name;
     private String description;
+    public static List<String> knownSpells = new ArrayList<>();
 
-    public static Spell listSpells() {
+    public static Spell listSpells(Wizard wizard) {
         Spell spell = new Spell();
-        spell.setSpellName(chooseSpell());
+        spell.setName(chooseSpell(wizard));
         return spell;
     }
 
-    private void setSpellName(SpellList chooseSpell) {
-        this.name = chooseSpell.getName();
-        this.description = chooseSpell.getDescription();
-    }
-
-    private static SpellList chooseSpell() {
+    private static String chooseSpell(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a spell :");
-        int count = 1;
-        for (SpellList s : SpellList.values()) {
-            System.out.print(count + ")");
-            System.out.println(s.getName());
-            count += 1;
-        }
+        System.out.println("Choose a spell : \n 1.WingardiumLeviosa \n 2.Sectumsempra \n 3.Incendio");
+
+
         int numberSpell = scanner.nextInt();
-        SpellList chosenSpell = null;
+        Spell chosenSpell = null;
         switch (numberSpell) {
             case 1:
-                chosenSpell = SpellList.Expelliarmus;
+                chosenSpell = Spell.WingardiumLeviosa;
                 break;
             case 2:
-                chosenSpell = SpellList.Sectumsempra;
+                chosenSpell = Spell.Sectumsempra;
                 break;
             case 3:
-                chosenSpell = SpellList.Incendio;
+                chosenSpell = Spell.Incendio;
                 break;
+            default:
+                chooseSpell(wizard);
 
         }
         System.out.println("You chose the spell " + chosenSpell.getName());
-        return chosenSpell;
-    }
 
+        wizard.getKnownSpells().add(chosenSpell);
+        return chosenSpell.getName();
+    }
 
     public int getDamage() {
         int damage = 0;
         switch (this.name) {
-            case "Expelliarmus":
+            case "WingardiumLeviosa":
                 damage = 10;
                 break;
             case "Sectumsempra":
@@ -67,21 +67,8 @@ public class Spell {
         return damage;
     }
 
-}
+    public static final Spell WingardiumLeviosa = new Spell("WingardiumLeviosa", "Throw rock on the head of the enemy");
+    public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds");
+    public static final Spell Incendio = new Spell("Incendio", "Creates fire");
 
-enum SpellList {
-    Expelliarmus("Expelliarmus", "Disarms opponent"),
-    Sectumsempra("Sectumsempra", "Causes severe wounds"),
-    Incendio("Incendio", "Creates fire");
-
-
-    @Getter
-    private final String name;
-    @Getter
-    private final String description;
-
-    SpellList(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
 }

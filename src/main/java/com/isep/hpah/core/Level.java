@@ -4,7 +4,8 @@ import lombok.*;
 
 public class Level {
     @Getter @Setter
-    private String chapter;
+    private String name;
+
 
     public Level() {
         this.chapter = "Chapter 1";

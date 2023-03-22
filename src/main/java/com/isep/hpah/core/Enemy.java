@@ -9,8 +9,6 @@ public class Enemy extends AbstractEnemy {
     }
 
 
-
-
     @Override
     public String toString() {
         return "Enemy [type=" + type + ", name=" + getName() + ", damage=" + getDamage() + ", health=" + getHealth() + "]";
