@@ -4,7 +4,7 @@ import lombok.*;
 
 public class Level {
     @Getter @Setter
-    private String name;
+    private String chapter;
 
 
     public Level() {

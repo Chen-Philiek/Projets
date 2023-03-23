@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Spell {
+public class Spell extends AbstractSpell{
     private String name;
     private String description;
     public static List<String> knownSpells = new ArrayList<>();

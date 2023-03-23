@@ -24,7 +24,7 @@ public class Combat {
     }
     public void start(Wizard wizard) {
 
-        System.out.println("Choose your action: \n1. Cast spell\n 2. Use potion\n 3. Flee");
+        System.out.println("Choose your action:\n1. Cast spell\n2. Use potion\n3. Flee");
 
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
@@ -49,8 +49,17 @@ public class Combat {
             System.out.println("You don't have any potion!");
             return;
         }
-
         System.out.println("Choose the potion to use:");
+        for (int i = 0; i < potions.size(); i++) {
+            System.out.println((i + 1) + ". " + potions.get(i).getName() + " (" + potions.get(i).getHealAmount() + " heal)");
+        }
+        Scanner scanner = new Scanner(System.in);
+        int potionIndex = scanner.nextInt()-1;
+        Potion potion = potions.get(potionIndex);
+        int heal1 = (int) potion.getHealAmount();
+        System.out.println("Vous utilisez " + potion.getName() + " et vous régénérez " + heal1 + " de points de vie\n");
+        wizard.Healing(wizard, heal1);
+
     }
     public boolean flee(Wizard wizard) {
         int fleeChance = (int) (Math.random() * 101); // Tirage aléatoire d'un nombre entre 0 et 100
@@ -61,9 +70,10 @@ public class Combat {
             System.out.println(wizard.getName() + " ne parvient pas à fuir et doit combattre " + enemy.getName() + " !");
             return false;
         }
+
     }
 
-
+// WIZARD ET ENEMY TURN
     public static void enemyturn(Wizard wizard){
         if (enemy.getHealth() >= 0){
             int damage1 = enemy.getDamage();

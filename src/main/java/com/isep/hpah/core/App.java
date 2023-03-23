@@ -25,9 +25,11 @@ public class App {
         wizard.setWand(Wand.getWand());
         wizard.setPet(Pet.randomPet());
         wizard.setKnownSpells(new ArrayList<>());
+        wizard.setPotions(new ArrayList<>());
         Wand.randomWandSize();
         wizard.setHealth(Wizard.randomHealth());
-        Potion.ListPotion();
+        wizard.setHealth(Wizard.MaxHealth());
+        Potion.ListPotion(wizard);
         Spell.listSpells(wizard);
         AbstractEnemy enemy = new Enemy("Troll", 100,40,EnemyType.TROLL);
         AbstractEnemy boss = new Boss("Voldemort",20,60,BossLevel.VOLEDEMORT);

@@ -20,7 +20,9 @@ public abstract class AbstractEnemy extends Character {
     public void takeDamage(int damage) {
         this.health -= damage;
         System.out.println("Le " + this.getName() + " prend " + damage + " points de dégâts !");
+        System.out.println("-----------------------------------------");
         System.out.println("Le " + this.getName() + " n'a plus que : " + health + " points de vies !" );
+        System.out.println("-----------------------------------------");
         if (this.health <= 0) {
             this.setAlive(false);
             System.out.println(this.getName() + " est mort !");

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @Getter
@@ -14,55 +16,57 @@ import java.util.Scanner;
 public class Potion {
     private String name;
     private String description;
+    public static List<Potion> potions= new ArrayList<>();
 
-    public static Potion ListPotion() {
+    public static Potion ListPotion(Wizard wizard) {
         Potion potion = new Potion();
-        potion.setPotion(ChoosePotion());
+        potion.setName(ChoosePotion(wizard));
         return potion;
     }
 
-    private void setPotion(PotionList choosePotion) {
-        this.name = choosePotion.getName();
-    }
-
-    private static PotionList ChoosePotion() {
+    private static String ChoosePotion(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the potion you want as first potion : ");
-        int count = 1;
-        for (PotionList p : PotionList.values()) {
-            System.out.print(count + ")");
-            System.out.println(p);
-            count += 1;
-        }
+        System.out.println("Choose a potion : \n 1.L \n 2.M\n 3.G");
+
+
+
         int numberPotion = scanner.nextInt();
-        PotionList ChoosedPotion =null;
+        Potion ChoosedPotion =null;
         switch (numberPotion) {
             case 1:
-                ChoosedPotion = PotionList.Powerup;
+                ChoosedPotion = Potion.L;
                 break;
             case 2:
-                ChoosedPotion = PotionList.Speedup;
+                ChoosedPotion = Potion.M;
                 break;
             case 3:
-                ChoosedPotion = PotionList.Defenseup;
+                ChoosedPotion = Potion.G;
                 break;
             default:
-                Potion.ChoosePotion();
+                ChoosePotion(wizard);
         }
-        System.out.println("Vous venez d'obtenir la potion " + ChoosedPotion);
-        return ChoosedPotion;
+        System.out.println("Vous venez d'obtenir la potion " + ChoosedPotion.getName());
+        wizard.getPotions().add(ChoosedPotion);
+        return ChoosedPotion.getName();
     }
 
     public double getHealAmount() {
-        switch (this.getName()) {
-            case "Powerup":
-                return 50.0;
-            case "Speedup":
-                return 30.0;
-            case "Defenseup":
-                return 20.0;
-            default:
-                return 0.0;
+        int heal = 0 ;
+        switch (this.name) {
+            case "L":
+                heal = 50;
+                break;
+            case "M":
+                heal = 30;
+                break;
+            case "G":
+                heal = 20;
+                break;
+
         }
+        return heal;
     }
+    public static final Potion L = new Potion("L", "T");
+    public static final Potion M = new Potion("M", "C");
+    public static final Potion G = new Potion("G", "C");
 }
