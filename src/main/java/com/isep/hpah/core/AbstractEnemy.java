@@ -25,7 +25,8 @@ public abstract class AbstractEnemy extends Character {
         System.out.println("-----------------------------------------");
         if (this.health <= 0) {
             this.setAlive(false);
-            System.out.println(this.getName() + " est mort !");
+            System.out.println("Le "+ this.getName() + " est mort !");
+            System.out.println("Voulez vous passer au niveau suivant ?\n1. Oui\n2. Non");
         }
     }
 

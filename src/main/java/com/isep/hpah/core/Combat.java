@@ -75,7 +75,7 @@ public class Combat {
 
 // WIZARD ET ENEMY TURN
     public static void enemyturn(Wizard wizard){
-        if (enemy.getHealth() >= 0){
+        if (enemy.getHealth() > 0){
             int damage1 = enemy.getDamage();
             System.out.println("C'est au tour du " + enemy.getName() + "!");
             System.out.println("Le " + enemy.getName() + " vous attaque et vous inflige : " + damage1 + " de dégâts");
@@ -108,10 +108,14 @@ public class Combat {
 
         }
 
+        if ((enemy.getHealth() > 0) || (wizard.getHealth() >0)) {
+            wizardturn(wizard);
+            enemyturn(wizard);
+        }
+        if (wizard.getHealth()<0){
+            System.out.println("Vous avez perdu !");
 
-        wizardturn(wizard);
-        enemyturn(wizard);
-
+        }
 
 
            /* if (boss != null && !isBossFight) {
@@ -136,9 +140,7 @@ public class Combat {
         while (enemy.getHealth() > 0) {
             start(wizard);
         }
-        if (enemy.getHealth() <= 0 ) {
-            System.out.println("L'ennemie " + enemy.getName() + " a été vaincu");
-        }
+
 
     }
 
