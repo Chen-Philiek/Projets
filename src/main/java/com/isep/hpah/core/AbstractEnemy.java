@@ -16,6 +16,15 @@ public abstract class AbstractEnemy extends Character {
         this.setAlive(true);
     }
 
+    public void enemyturn(Wizard wizard){
+        if (this.getHealth() > 0){
+            int damage1 = this.getDamage();
+            System.out.println("C'est au tour du " + this.getName() + "!");
+            System.out.println("Le " + this.getName() + " vous attaque et vous inflige : " + damage1 + " de dégâts");
+            wizard.takeDamage(damage1);
+        }
+
+    }
 
     public void takeDamage(int damage) {
         this.health -= damage;
@@ -26,7 +35,8 @@ public abstract class AbstractEnemy extends Character {
         if (this.health <= 0) {
             this.setAlive(false);
             System.out.println("Le "+ this.getName() + " est mort !");
-            System.out.println("Voulez vous passer au niveau suivant ?\n1. Oui\n2. Non");
+
+
         }
     }
 

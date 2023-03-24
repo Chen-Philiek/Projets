@@ -1,13 +1,19 @@
 package com.isep.hpah.core;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.*;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Level {
-    @Getter @Setter
-    private String chapter;
+
+    private Enemy enemy;
 
 
     public Level() {
-        this.chapter = "Chapter 1";
+
     }
+
+
 }

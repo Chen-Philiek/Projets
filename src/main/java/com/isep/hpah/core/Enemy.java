@@ -1,5 +1,7 @@
 package com.isep.hpah.core;
 
+
+
 public class Enemy extends AbstractEnemy {
     private EnemyType type;
 
@@ -7,6 +9,12 @@ public class Enemy extends AbstractEnemy {
         super(name, damage, health);
         this.type = type;
     }
+  public static Enemy createTroll(){
+        Enemy Troll = new Enemy("TROLL", 10,30,EnemyType.TROLL);
+       return Troll;
+  }
+
+
 
 
     @Override
