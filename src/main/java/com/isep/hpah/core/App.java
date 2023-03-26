@@ -9,8 +9,6 @@ public class App {
         introduction();
         Wizard wizard = Game() ;
         wizard.ChapterOne();
-
-
     }
 
 
@@ -33,23 +31,15 @@ public class App {
         Spell.listSpells(wizard);
     return wizard;
 
-/*
-        Combat combat = new Combat(enemy, boss);
-        Level.ChatperOne();
-        // Lancer le combat
-        combat.ennemyappear();
-        combat.fight(wizard);
-
-
- */
     }
 
     private static void introduction() {
         System.out.println("Bienvenue dans le monde de Harry Potter. \nJeune sorcier ou sorcière, avant de démarrer l'aventure, voici quelques éléments à savoir : ");
-        System.out.println("• Les potions sont plus efficaces pour les membres de Hufflepuff.\n" +
-                "• Les sorts font plus de dégâts pour les membres de Slytherin.\n" +
-                "• Les sorciers de Gryffindor sont plus résistants aux dégâts.\n" +
-                "• Les sorciers de Ravenclaw sont plus précis.");
+        System.out.println("""
+                • Les potions sont plus efficaces pour les membres de Hufflepuff.
+                • Les sorts font plus de dégâts pour les membres de Slytherin.
+                • Les sorciers de Gryffindor sont plus résistants aux dégâts.
+                • Les sorciers de Ravenclaw sont plus précis.""");
         System.out.println("Vos stats sont générés aléatoirement. Cependant, vous pourrez faire des choix pour tout ce qui est potion et sortillège");
         Wait.wait(2000);
     }

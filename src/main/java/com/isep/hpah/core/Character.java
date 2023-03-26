@@ -4,13 +4,16 @@ import lombok.*;
 
 
 //@AllArgsConstructor
+@Getter @Setter
+public abstract class Character {
+    public int dogdeChance;
+    private String name;
 
-public abstract class Character{
-    private static final int DODGE_CHANCE = 20;
-    @Getter @Setter private String name;
-    @Getter @Setter private int damage;
-    @Getter @Setter private int health;
-    @Getter @Setter private boolean alive;
+    private int damage;
+
+    private int health;
+
+    private boolean alive;
 
 
 
@@ -32,9 +35,12 @@ public abstract class Character{
  */
 
 
-    protected int getDodgeChance() {
-        return DODGE_CHANCE;
+    /*public static int dodgeChance() {
+        return  (int) (Math.random() * 101);
+
     }
+
+     */
 }
 
 

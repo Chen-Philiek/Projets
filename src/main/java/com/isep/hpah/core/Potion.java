@@ -26,7 +26,7 @@ public class Potion {
 
     private static String ChoosePotion(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a potion : \n 1.L \n 2.M\n 3.G");
+        System.out.println("Choose a potion : \n 1.Baume de Fierabras \n 2.Brise-Lame\n 3.Potion de Dittany ");
 
 
 
@@ -34,13 +34,13 @@ public class Potion {
         Potion ChoosedPotion =null;
         switch (numberPotion) {
             case 1:
-                ChoosedPotion = Potion.L;
+                ChoosedPotion = Potion.BaumedeFierabras;
                 break;
             case 2:
-                ChoosedPotion = Potion.M;
+                ChoosedPotion = Potion.BriseLame;
                 break;
             case 3:
-                ChoosedPotion = Potion.G;
+                ChoosedPotion = Potion.PotiondeDittany ;
                 break;
             default:
                 ChoosePotion(wizard);
@@ -53,20 +53,20 @@ public class Potion {
     public double getHealAmount() {
         int heal = 0 ;
         switch (this.name) {
-            case "L":
+            case "Baume de Fierabras":
                 heal = 50;
                 break;
-            case "M":
+            case "Brise-Lame":
                 heal = 30;
                 break;
-            case "G":
+            case "Potion de Dittany ":
                 heal = 20;
                 break;
 
         }
         return heal;
     }
-    public static final Potion L = new Potion("L", "T");
-    public static final Potion M = new Potion("M", "C");
-    public static final Potion G = new Potion("G", "C");
+    public static final Potion BaumedeFierabras = new Potion("Baume de Fierabras", "Brulure et cicacitre");
+    public static final Potion BriseLame = new Potion("Brise-Lame", "Blessure magique");
+    public static final Potion PotiondeDittany  = new Potion("Potion de Dittany ", "Blessure mineure");
 }

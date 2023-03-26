@@ -13,7 +13,9 @@ public class Enemy extends AbstractEnemy {
         Enemy Troll = new Enemy("TROLL", 10,30,EnemyType.TROLL);
        return Troll;
   }
-
+  public  static Enemy creatPorkey(){
+        Enemy Portekey = new Enemy("Portkey", 0,1,ENe);
+  }
 
 
 

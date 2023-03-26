@@ -19,11 +19,18 @@ public class Boss extends AbstractEnemy {
         Boss Voledemort = new Boss("Voledemort",30, 60, BossLevel.VOLEDEMORT);
         return Voledemort;
     }
-    public static Boss createDétraqueurs(){
-        Boss Détraqueurs = new Boss("Détraqueurs", 25,55,BossLevel.DETRAQUEURS);
-        return Détraqueurs;
+    public static Boss createDetraqueurs(){
+        Boss Detraqueurs = new Boss("Détraqueurs", 25,55,BossLevel.DETRAQUEURS);
+        return Detraqueurs;
     }
-
+    public static Boss creatPeter(){
+        Boss PeterPettigrow = new Boss("Peter Pettigrow",30,60,BossLevel.PETERPETTYGROW);
+        return PeterPettigrow;
+    }
+    public static Boss createDoubleBoss(){
+        Boss Voledemort_et_PeterPettigrow = new Boss("Voledemort et Peter", 60,120, BossLevel.VOLEDEMORT_ET_PETER);
+        return Voledemort_et_PeterPettigrow;
+    }
 
 
     @Override

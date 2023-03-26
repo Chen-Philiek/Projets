@@ -16,7 +16,10 @@ import lombok.Setter;
 public class Spell extends AbstractSpell{
     private String name;
     private String description;
+    private int damage;
     public static List<String> knownSpells = new ArrayList<>();
+
+
 
     public static Spell listSpells(Wizard wizard) {
         Spell spell = new Spell();
@@ -26,7 +29,7 @@ public class Spell extends AbstractSpell{
 
     private static String chooseSpell(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a spell : \n 1.WingardiumLeviosa \n 2.Sectumsempra \n 3.Incendio");
+        System.out.println("Choose a spell \uD83E\uDD14: \n 1.WingardiumLeviosa (recommandé en début d'aventure)\n 2.Sectumsempra \n 3.Incendio");
 
 
         int numberSpell = scanner.nextInt();
@@ -51,24 +54,28 @@ public class Spell extends AbstractSpell{
         return chosenSpell.getName();
     }
 
+    public void spellStat(int extraDamage) {
+        setDamage(getDamage() + extraDamage);
+    }
     public int getDamage() {
-        int damage = 0;
-        switch (this.name) {
-            case "WingardiumLeviosa":
-                damage = 10;
-                break;
-            case "Sectumsempra":
-                damage = 20;
-                break;
-            case "Incendio":
-                damage = 15;
-                break;
-        }
+        int damage = switch (this.name) {
+            case "WingardiumLeviosa" -> 20;
+            case "Sectumsempra" -> 7;
+            case "Incendio" -> 9;
+            case "Accio" -> 22;
+            case "GryffindorSword" -> 24;
+            case "ExpectoPatronum" -> 23;
+            default -> 0;
+        };
+
         return damage;
     }
+    public static final Spell WingardiumLeviosa = new Spell("WingardiumLeviosa", "Throw rock on the head of the enemy",20);
+    public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds",7);
+    public static final Spell Incendio = new Spell("Incendio", "Creates fire",9);
+    public static final Spell Accio = new Spell("Accio", "use enemy crocs",22);
+    public static final Spell GryffindorSword = new Spell("GryffindorSword", "Legendary sword",24);
+    public static final Spell ExpectoPatronum = new Spell("ExpectoPatronum", "Fait fuir l'ennemie",23);
 
-    public static final Spell WingardiumLeviosa = new Spell("WingardiumLeviosa", "Throw rock on the head of the enemy");
-    public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds");
-    public static final Spell Incendio = new Spell("Incendio", "Creates fire");
 
 }
