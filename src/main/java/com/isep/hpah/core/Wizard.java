@@ -47,6 +47,7 @@ public class Wizard extends Character{
         }
     }
 
+
     public boolean passChapter(int i){
 
         if (i == 1 && this.getHealth()>0){
@@ -62,7 +63,7 @@ public class Wizard extends Character{
             System.out.println("Les détraqueurs s'enfuient !");
             System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
             ChapterFour();
-            System.out.println("Trouvez Portkey et utilisez Accio pour pouvoir vous enfuir !");
+
         }if (i==4 && this.getHealth()>0) {
             System.out.println("Vous avez réussi à fuir !");
             System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
@@ -351,11 +352,12 @@ private void dodgeset(){
                 """);
         Wait.wait(2000);
         System.out.println("Deux boss apparaissent !\n Il semblerait que ce soit Voledemort et Peter Pettygrow en même temps!");
+        System.out.println("Trouvez Portkey et utilisez Accio pour pouvoir vous enfuir !");
         Wait.wait(2000);
 
-        this.fight(Boss.createDoubleBoss());
+        this.fight(Enemy.creatPorkey());
         int i =4;
-        if (this.getHealth()>0) {
+        if (this.getHealth()>0){
             this.gotonextChapter(i);
         }else{
             System.out.println("Vous avez perdu !");
