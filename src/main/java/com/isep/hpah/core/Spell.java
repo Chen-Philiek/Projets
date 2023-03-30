@@ -29,24 +29,15 @@ public class Spell extends AbstractSpell{
 
     private static String chooseSpell(Wizard wizard) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a spell \uD83E\uDD14: \n 1.WingardiumLeviosa (recommandé en début d'aventure)\n 2.Sectumsempra \n 3.Incendio");
+        System.out.println("Choose a spell \uD83E\uDD14: \n 1.WingardiumLeviosa (recommandé en début d'aventure)\n 2.Incendio");
 
 
         int numberSpell = scanner.nextInt();
         Spell chosenSpell = null;
         switch (numberSpell) {
-            case 1:
-                chosenSpell = Spell.WingardiumLeviosa;
-                break;
-            case 2:
-                chosenSpell = Spell.Sectumsempra;
-                break;
-            case 3:
-                chosenSpell = Spell.Incendio;
-                break;
-            default:
-                chooseSpell(wizard);
-
+            case 1 -> chosenSpell = Spell.WingardiumLeviosa;
+            case 2 -> chosenSpell = Spell.Incendio;
+            default -> chooseSpell(wizard);
         }
         System.out.println("You chose the spell " + chosenSpell.getName());
 
@@ -71,7 +62,7 @@ public class Spell extends AbstractSpell{
         return damage;
     }
     public static final Spell WingardiumLeviosa = new Spell("WingardiumLeviosa", "Throw rock on the head of the enemy",20);
-    public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds",7);
+    public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds",0);
     public static final Spell Incendio = new Spell("Incendio", "Creates fire",9);
     public static final Spell Accio = new Spell("Accio", "use enemy crocs",22);
     public static final Spell GryffindorSword = new Spell("GryffindorSword", "Legendary sword",24);

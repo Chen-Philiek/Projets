@@ -16,20 +16,25 @@ public class Boss extends AbstractEnemy {
         return Basilik;
     }
     public static  Boss createVoledemort(){
-        Boss Voledemort = new Boss("Voledemort",30, 60, BossLevel.VOLEDEMORT);
+        Boss Voledemort = new Boss("Voledemort",35, 63, BossLevel.VOLEDEMORT);
+
         return Voledemort;
     }
     public static Boss createDetraqueurs(){
         Boss Detraqueurs = new Boss("Détraqueurs", 25,55,BossLevel.DETRAQUEURS);
         return Detraqueurs;
     }
-    public static Boss creatPeter(){
-        Boss PeterPettigrow = new Boss("Peter Pettigrow",30,60,BossLevel.PETERPETTYGROW);
-        return PeterPettigrow;
-    }
     public static Boss createDoubleBoss(){
         Boss Voledemort_et_PeterPettigrow = new Boss("Voledemort et Peter", 60,120, BossLevel.VOLEDEMORT_ET_PETER);
         return Voledemort_et_PeterPettigrow;
+    }
+    public static Boss createDolores(){
+        Boss DoloresOmbrage = new Boss("Dolores Ombrage",30,60,BossLevel.DOLORES);
+        return DoloresOmbrage;
+    }
+    public static Boss createBella(){
+        Boss Bellatrix = new Boss("Bellatrix Lestrange",32,62,BossLevel.BELLATRIX);
+        return Bellatrix;
     }
 
 

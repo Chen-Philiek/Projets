@@ -5,7 +5,10 @@ public enum BossLevel {
     DETRAQUEURS,
     BASILIC,
     VOLEDEMORT_ET_PETER,
-    PETERPETTYGROW;
+    MANGEMORTS,
+    BELLATRIX,
+    DOLORES;
+
 
 
 }

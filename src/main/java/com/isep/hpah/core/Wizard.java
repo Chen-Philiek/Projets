@@ -14,6 +14,7 @@ public class Wizard extends Character{
     @Getter @Setter private int max_health;
 
 
+
     String longTrait = "-".repeat(50);
 
     public static int randomHealth(){
@@ -64,9 +65,25 @@ public class Wizard extends Character{
             System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
             ChapterFour();
 
+
         }if (i==4 && this.getHealth()>0) {
             System.out.println("Vous avez réussi à fuir !");
             System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
+            ChapterFive();
+        }
+        if (i ==5 && this.getHealth()>0 ){
+            System.out.println("Vous avez obtenus les feux d'artifices !");
+            System.out.println("Maintenant que la fête commence !");
+            System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
+            ChapterSix();
+        }
+        if (i==6 && this.getHealth() >0 ){
+            System.out.println("Vous pouvez décider de vous allier aux Mangemorts si vous êtes de serpentard !");
+            System.out.println("Vous êtes autorisés à aller dans le chapitre suivant !");
+            ChapterSeven();
+        }
+        if (i ==7 && this.getHealth()>0){
+            System.out.println("Vous avez vaincu Voldemort et Bellatrix, Vous êtes maintenant diplômé !");
         }
 
         else{
@@ -139,18 +156,19 @@ public class Wizard extends Character{
 
     public void castSpell(AbstractEnemy ennemies) {
         List<Spell> knownSpells = this.getKnownSpells();
-        if (knownSpells.isEmpty()) {
-            System.out.println("You don't know any spell!");
-            return;
-        }
         System.out.println("Choose the spell to cast:");
-        for (int i = 0; i < knownSpells.size(); i++) {
-            System.out.println((i + 1) + ". " + knownSpells.get(i).getName() + " (" + knownSpells.get(i).getDamage() + " damage)");
+        for (int b = 0; b < knownSpells.size(); b++) {
+            System.out.println((b + 1) + ". " + knownSpells.get(b).getName() + " (" + knownSpells.get(b).getDamage() + " damage)");
 
         }
         dodge(ennemies);
 
     }
+
+
+
+
+
 
     public void fight(AbstractEnemy ennemies){
         boolean Status = true; // Quand le combat n'est pas terminé
@@ -219,6 +237,21 @@ public class Wizard extends Character{
             case 1 -> chosenSpell = Spell.Accio;
             case 2 -> chosenSpell = Spell.GryffindorSword;
             case 3 -> chosenSpell = Spell.ExpectoPatronum;
+            default -> learnSpell();
+        }
+        System.out.println("You chose the : " + chosenSpell.getName());
+        this.getKnownSpells().add(chosenSpell);
+    }
+    private void learnSpell1() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose a new spell or other \uD83E\uDD14: \n1.Accio (Recommandé si vous n'êtes pas de Gryffindor)\n2.GryffindorSword \n3.Expecto Patronum (efficace face aux détraqueurs !)");
+        int numberSpell = scanner.nextInt();
+        Spell chosenSpell = null;
+        switch (numberSpell) {
+            case 1 -> chosenSpell = Spell.Sectumsempra;
+            case 2 -> chosenSpell = Spell.GryffindorSword;
+            case 3 -> chosenSpell = Spell.ExpectoPatronum;
+
             default -> learnSpell();
         }
         System.out.println("You chose the : " + chosenSpell.getName());
@@ -336,13 +369,14 @@ private void dodgeset(){
         this.fight(Boss.createDetraqueurs());
         int i =3;
         if (this.getHealth()>0) {
+            this.upStats();
             this.gotonextChapter(i);
         }else{
             System.out.println("Vous avez perdu !");
         }
     }
-    public void ChapterFour(){
-        System.out.println("<"+longTrait +"Chapitre 4" + longTrait +">\n");
+    public void ChapterFour() {
+        System.out.println("<" + longTrait + "Chapitre 4" + longTrait + ">\n");
         System.out.println("The Goblet of Fire\n\n");
         System.out.println("""
                 Par malheur, vous avez remporté le Tournoi des Trois Sorciers... et le droit de mourir. Vous êtes
@@ -351,17 +385,20 @@ private void dodgeset(){
                 Voldemort.
                 """);
         Wait.wait(2000);
-        System.out.println("Deux boss apparaissent !\n Il semblerait que ce soit Voledemort et Peter Pettygrow en même temps!");
+        System.out.println("Deux boss apparaissent !\nIl semblerait que ce soit Voldemort et Peter Pettygrow en même temps!");
         System.out.println("Trouvez Portkey et utilisez Accio pour pouvoir vous enfuir !");
         Wait.wait(2000);
+        System.out.println("Vous avez trouvé Portkey");
 
         this.fight(Enemy.creatPorkey());
         int i =4;
-        if (this.getHealth()>0){
+        if (this.getHealth()>0) {
             this.gotonextChapter(i);
         }else{
             System.out.println("Vous avez perdu !");
         }
+
+
     }
 
     public void ChapterFive(){
@@ -375,6 +412,15 @@ private void dodgeset(){
         Wait.wait(2000);
         System.out.println("Un ennemi apparaît !\n");
         Wait.wait(2000);
+        this.fight(Boss.createDolores());
+        int i = 5;
+        if (this.getHealth()>0){
+            this.upStats();
+            this.gotonextChapter(i);
+        }
+        else{
+            System.out.println("Vous avez perdu !");
+        }
     }
     public void ChapterSix(){
         System.out.println("<"+longTrait +"Chapitre 6" + longTrait +">\n");
@@ -384,9 +430,27 @@ private void dodgeset(){
                 de face (Sectumsempra). Si vous êtes de Serpentard, vous pouvez décider de rejoindre les rangs des
                 Mangemorts.
                 """);
+        learnSpell();
         Wait.wait(2000);
         System.out.println("Un ennemi apparaît !\n");
         Wait.wait(2000);
+        this.fight(Boss.createDolores());
+        int i= 6;
+        List<Spell> knownSpells = this.getKnownSpells();
+        for (int b = 0; b < knownSpells.size(); b++) {
+            if (getKnownSpells().get(b).getName().equals("Sectumsempra")) {
+                System.out.println("Vous avez réussi à vous allier aux Mangemorts");
+                this.gotonextChapter(i);
+            }
+        }
+        if (this.getHealth()>0){
+            this.gotonextChapter(i);
+        }
+        else {
+            System.out.println("Vous avez perdu !");
+            System.exit(0);
+        }
+
     }
     public void ChapterSeven(){
         System.out.println("<"+longTrait +"Chapitre 7" + longTrait +">\n");

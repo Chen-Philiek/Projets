@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="Ajout de chapitre et suppresion de la classe combat">
+    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="next chapter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/BossLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/BossLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Combat.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/PotionList.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Spell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" afterDir="false" />
     </list>
@@ -105,7 +101,8 @@
       <workItem from="1678435156897" duration="22929000" />
       <workItem from="1678459841929" duration="71521000" />
       <workItem from="1679303233611" duration="38076000" />
-      <workItem from="1679645762590" duration="62002000" />
+      <workItem from="1679645762590" duration="64113000" />
+      <workItem from="1680032100190" duration="29871000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1678434394428</created>
@@ -177,7 +174,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679689102518</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="dodge function and half stats levelup function">
+      <created>1679814418049</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1679814418049</updated>
+    </task>
+    <task id="LOCAL-00012" summary="next chapter">
+      <created>1680098382229</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680098382230</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +211,9 @@
     <MESSAGE value="echange d'atck" />
     <MESSAGE value="potion et calcul de points de vie" />
     <MESSAGE value="Ajout de chapitre et suppresion de la classe combat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de chapitre et suppresion de la classe combat" />
+    <MESSAGE value="dodge function and half stats levelup function" />
+    <MESSAGE value="next chapter" />
+    <option name="LAST_COMMIT_MESSAGE" value="next chapter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
