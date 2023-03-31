@@ -42,9 +42,9 @@ public class Potion {
 
     public double getHealAmount() {
         int heal = switch (this.name) {
-            case "Baume de Fierabras" -> 50;
-            case "Brise-Lame" -> 30;
-            case "Potion de Dittany " -> 20;
+            case "Baume de Fierabras" -> 100;
+            case "Brise-Lame" -> 75;
+            case "Potion de Dittany " -> 55;
             default -> 0;
         };
         return heal;

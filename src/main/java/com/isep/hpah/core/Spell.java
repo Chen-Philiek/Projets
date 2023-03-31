@@ -21,10 +21,9 @@ public class Spell extends AbstractSpell{
 
 
 
-    public static Spell listSpells(Wizard wizard) {
+    public static void listSpells(Wizard wizard) {
         Spell spell = new Spell();
         spell.setName(chooseSpell(wizard));
-        return spell;
     }
 
     private static String chooseSpell(Wizard wizard) {
@@ -39,6 +38,7 @@ public class Spell extends AbstractSpell{
             case 2 -> chosenSpell = Spell.Incendio;
             default -> chooseSpell(wizard);
         }
+        assert chosenSpell != null;
         System.out.println("You chose the spell " + chosenSpell.getName());
 
         wizard.getKnownSpells().add(chosenSpell);
@@ -49,7 +49,8 @@ public class Spell extends AbstractSpell{
         setDamage(getDamage() + extraDamage);
     }
     public int getDamage() {
-        int damage = switch (this.name) {
+
+        return switch (this.name) {
             case "WingardiumLeviosa" -> 20;
             case "Sectumsempra" -> 7;
             case "Incendio" -> 9;
@@ -58,8 +59,6 @@ public class Spell extends AbstractSpell{
             case "ExpectoPatronum" -> 23;
             default -> 0;
         };
-
-        return damage;
     }
     public static final Spell WingardiumLeviosa = new Spell("WingardiumLeviosa", "Throw rock on the head of the enemy",20);
     public static final Spell Sectumsempra = new Spell("Sectumsempra", "Causes severe wounds",0);

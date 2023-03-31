@@ -3,15 +3,16 @@ package com.isep.hpah.core;
 import lombok.*;
 import java.util.List;
 import java.util.Scanner;
-
+@Getter @Setter
 public class Wizard extends Character{
-    @Getter @Setter private Pet pet;
-    @Getter @Setter private Wand wand;
-    @Getter @Setter  private House house;
-    @Getter @Setter private List<Potion> potions;
-    @Getter @Setter private List<Spell> knownSpells;
-    @Getter @Setter private int health;
-    @Getter @Setter private int max_health;
+     private Pet pet;
+     private Wand wand;
+     private House house;
+     private List<Potion> potions;
+     private List<Spell> knownSpells;
+     private int health;
+     private int max_health;
+     private boolean ChapterFourIsOk = false;
 
 
 
@@ -37,13 +38,13 @@ public class Wizard extends Character{
     public void start(AbstractEnemy ennemies) {
 
         System.out.println("Choose your action\uD83E\uDD14:\n1. Cast spell\n2. Use potion\n3. Flee");
-
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
         switch (action) {
             case 1 -> this.castSpell(ennemies);
             case 2 -> this.usePotion();
             case 3 -> this.flee(ennemies);
+           // case 4 -> this.forbiddSpell(ennemies);
             default -> System.out.println("Invalid action");
         }
     }
@@ -102,6 +103,22 @@ public class Wizard extends Character{
         }
         return true;
     }
+    // Forbidden spell
+   /* public void forbiddSpell(AbstractEnemy ennemies){
+        List<ForbiddenSpell> forbiddenSpells = this.getForbiddenSpells();
+        if (forbiddenSpells.isEmpty()){
+            System.out.println("You don't have any forbiddenSpell !❌");
+            return;
+        }
+        System.out.println("Choose the forbbidenSpell to use \uD83E\uDD14:");
+        for (int i = 0; i < forbiddenSpells.size(); i++) {
+            System.out.println((i + 1) + ". " + forbiddenSpells.get(i).getName() + " (" + forbiddenSpells.get(i).getDamage() + " heal)");
+        }
+
+
+    }
+
+    */
     //Potion part
     public void usePotion() {
         List<Potion> potions = this.getPotions();
@@ -117,6 +134,9 @@ public class Wizard extends Character{
         int potionIndex = scanner.nextInt()-1;
         Potion potion = potions.get(potionIndex);
         int heal1 = (int) potion.getHealAmount();
+        if (this.getHouse() == House.HUFFLEPUFF){
+            heal1 += 20;
+        }
         System.out.println("Vous utilisez " + potion.getName() + " et vous régénérez " + heal1 + " de points de vie\n");
         this.Healing(heal1);
         potions.remove(potion);
@@ -166,10 +186,6 @@ public class Wizard extends Character{
     }
 
 
-
-
-
-
     public void fight(AbstractEnemy ennemies){
         boolean Status = true; // Quand le combat n'est pas terminé
         while (Status) {
@@ -217,14 +233,10 @@ public class Wizard extends Character{
             case 1 -> {
                 boolean clearchap = true;// The chapter is cleaned
                 while (clearchap) {
-                    clearchap = this.passChapter(i);
-
-                }
-                return true;
-            }
+                    clearchap = this.passChapter(i);}
+                return true;}
             case 2 -> {
-                return false;
-            }
+                return false;}
         }
         return gotonextChapter(i);
     }
@@ -239,20 +251,19 @@ public class Wizard extends Character{
             case 3 -> chosenSpell = Spell.ExpectoPatronum;
             default -> learnSpell();
         }
+        assert chosenSpell != null;
         System.out.println("You chose the : " + chosenSpell.getName());
         this.getKnownSpells().add(chosenSpell);
     }
     private void learnSpell1() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a new spell or other \uD83E\uDD14: \n1.Accio (Recommandé si vous n'êtes pas de Gryffindor)\n2.GryffindorSword \n3.Expecto Patronum (efficace face aux détraqueurs !)");
+        System.out.println("Choose a new spell or other \uD83E\uDD14: \n 1.Sectumsempra");
         int numberSpell = scanner.nextInt();
         Spell chosenSpell = null;
-        switch (numberSpell) {
-            case 1 -> chosenSpell = Spell.Sectumsempra;
-            case 2 -> chosenSpell = Spell.GryffindorSword;
-            case 3 -> chosenSpell = Spell.ExpectoPatronum;
-
-            default -> learnSpell();
+        if (numberSpell == 1) {
+            chosenSpell = Spell.Sectumsempra;
+        } else {
+            learnSpell();
         }
         System.out.println("You chose the : " + chosenSpell.getName());
         this.getKnownSpells().add(chosenSpell);
@@ -261,19 +272,33 @@ public class Wizard extends Character{
         Scanner scanner = new Scanner(System.in);
         int spellIndex = scanner.nextInt() - 1;
         Spell spell = knownSpells.get(spellIndex);
+        if(ChapterFourIsOk){
+            int i =4;
+            if (this.getHealth()>0 && spell.getName().equals("Accio")) {
+                this.gotonextChapter(i);
+            }else if(this.getHealth()>0){
+                System.out.println("Vous avez utilisé le mauvais sort!\n");
+                System.out.println("Vous devez maintenant affronter les deux boss ensemble");
+                this.fight(Boss.createDoubleBoss());
+                if (this.getHealth()>0){
+                    this.gotonextChapter(i);
+                }
+            }
+        }
         int damage = spell.getDamage();
         int dogdeChance = (int) (Math.random() * 101);
         int valeurRan = 100;
+        if(this.getHouse() == House.RAVENCLAW){
+            dogdeChance = (int) (Math.random()*91);
+        }
         if (dogdeChance < 0.65 * valeurRan) {
             System.out.println("Vous lancez " + spell.getName() + " et infligez " + damage + " de dégâts au " + ennemies.getName() + "\n");
-            ennemies.takeDamage(damage);
+            ennemies.takeDamage(this, damage);
             if (ennemies.getHealth() < 0) {
                 this.drop(ennemies);
             }
-
         } if (dogdeChance > 0.65*valeurRan) {
             System.out.println("Vous avez raté votre sort");
-
         }
     }
 private void dodgeset(){
@@ -389,14 +414,8 @@ private void dodgeset(){
         System.out.println("Trouvez Portkey et utilisez Accio pour pouvoir vous enfuir !");
         Wait.wait(2000);
         System.out.println("Vous avez trouvé Portkey");
-
+        ChapterFourIsOk = true;
         this.fight(Enemy.creatPorkey());
-        int i =4;
-        if (this.getHealth()>0) {
-            this.gotonextChapter(i);
-        }else{
-            System.out.println("Vous avez perdu !");
-        }
 
 
     }
@@ -430,25 +449,17 @@ private void dodgeset(){
                 de face (Sectumsempra). Si vous êtes de Serpentard, vous pouvez décider de rejoindre les rangs des
                 Mangemorts.
                 """);
-        learnSpell();
+        learnSpell1();
         Wait.wait(2000);
         System.out.println("Un ennemi apparaît !\n");
         Wait.wait(2000);
         this.fight(Boss.createDolores());
         int i= 6;
-        List<Spell> knownSpells = this.getKnownSpells();
-        for (int b = 0; b < knownSpells.size(); b++) {
-            if (getKnownSpells().get(b).getName().equals("Sectumsempra")) {
-                System.out.println("Vous avez réussi à vous allier aux Mangemorts");
-                this.gotonextChapter(i);
-            }
-        }
         if (this.getHealth()>0){
             this.gotonextChapter(i);
         }
         else {
             System.out.println("Vous avez perdu !");
-            System.exit(0);
         }
 
     }
@@ -460,6 +471,7 @@ private void dodgeset(){
                 Bellatrix Lestrange. Faites attention, ils peuvent vous tuer d’un coup avec Avada Kedavra si vous
                 n’êtes pas prêts.
                 """);
+
         Wait.wait(2000);
         System.out.println("Un ennemi apparaît !\n");
         Wait.wait(2000);

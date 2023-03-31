@@ -26,8 +26,12 @@ public abstract class AbstractEnemy extends Character {
 
     }
 
-    public void takeDamage(int damage) {
-        this.health -= damage;
+    public void takeDamage(Wizard wizard ,int damage) {
+        if (wizard.getHouse()== House.SLYTHERIN){
+            this.health -= (damage+10);
+        }else{
+            this.health -= damage;
+        }
         System.out.println("Le " + this.getName() + " prend " + damage + " points de dégâts !");
         System.out.println("-----------------------------------------");
         System.out.println("Le " + this.getName() + " n'a plus que : " + health + " points de vies !" );

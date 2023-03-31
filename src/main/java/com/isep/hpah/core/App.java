@@ -29,7 +29,9 @@ public class App {
         wizard.setHealth(Wizard.MaxHealth());
         Potion.ListPotion(wizard);
         Spell.listSpells(wizard);
+
     return wizard;
+
 
     }
 
