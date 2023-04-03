@@ -12,7 +12,7 @@ public class Wizard extends Character{
      private List<Spell> knownSpells;
      private int health;
      private int max_health;
-     private boolean ChapterFourIsOk = false;
+     private boolean ChapterSevenIsOk = false;
 
 
 
@@ -185,18 +185,38 @@ public class Wizard extends Character{
 
     }
 
-
+//Lancement de combat
     public void fight(AbstractEnemy ennemies){
         boolean Status = true; // Quand le combat n'est pas terminé
         while (Status) {
             if (ennemies.getHealth()>0 && this.getHealth()>0) {
                 Status = this.wizardturn(ennemies);
                 ennemies.enemyturn(this);
+                if (this.wand.getCore() == Core.PHOENIX_FEATHER && ChapterSevenIsOk){
+                    System.out.println("""
+                            Voldemort et Vous se tiennent face à face, chacun avec leur baguette magique en main, prêts à s'affronter dans un duel sans merci. Voldemort et vous êtes concentrés, prêts à utiliser votre magie pour gagner l'avantage sur l'autre.
+
+                            Soudain, vous levez tous les deux vos baguette magique et prononcent leur sortilège en même temps. Mais quelque chose d'étrange se produit : au moment où les deux sorts se rencontrent, une explosion se produit, aveuglant les deux sorciers.
+
+                            Quand vous réouvrez les yeux, vous vous rendez compte qu'un effet imprévisible s'est produit : Vos baguettes magiques ont été interconnectées par la magie des sorts que vous avez lancés en même temps, créant une réaction inattendue qui a stoppé le combat.
+
+                            Vous deux sorciers se regarde, interloqués. Vous vous rendez compte que vos baguettes magiques sont désormais liées l'une à l'autre, et qu'ils ne peuvent plus l'utiliser l'une contre l'autre.
+
+                            Après un moment de réflexion, Vous et Voldemort décident de mettre fin à leur rivalité. Vous vous éloignez, chacun de leur côté, sachant que la magie leur réserve encore bien des surprises imprévisibles.""");
+                    System.exit(0);
+
+                }else{
+                    Status = this.wizardturn(ennemies);
+                    ennemies.enemyturn(this);
+
+
+                }
+
             }else{return;}
 
         }
     }
-
+//Le wizard prend du damage
     public void takeDamage(int damage1) {
 
         this.setHealth(getHealth() - damage1);
@@ -213,6 +233,7 @@ public class Wizard extends Character{
         }
     }
 
+// Régénération de points de vies
     public void Healing(int heal1) {
         this.setHealth(getHealth() + heal1);
         if (getHealth() > 500) {
@@ -225,6 +246,7 @@ public class Wizard extends Character{
             System.out.println("------------------------------------------------------");
         }
     }
+    // Passer au chapitre suivant
     private boolean gotonextChapter(int i) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voulez vous passer au chapitre suivant ? : \n1.Oui \uD83D\uDE00 \n2.Non je veux arreter le jeu \uD83D\uDE14");
@@ -240,6 +262,7 @@ public class Wizard extends Character{
         }
         return gotonextChapter(i);
     }
+    //Apprentissage de nouveau sort
     private void learnSpell() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a new spell or other \uD83E\uDD14: \n1.Accio (Recommandé si vous n'êtes pas de Gryffindor)\n2.GryffindorSword \n3.Expecto Patronum (efficace face aux détraqueurs !)");
@@ -268,38 +291,24 @@ public class Wizard extends Character{
         System.out.println("You chose the : " + chosenSpell.getName());
         this.getKnownSpells().add(chosenSpell);
     }
+    //Probabilité de rater son sort
     private void dodge(AbstractEnemy ennemies) {
         Scanner scanner = new Scanner(System.in);
         int spellIndex = scanner.nextInt() - 1;
         Spell spell = knownSpells.get(spellIndex);
-        if(ChapterFourIsOk){
-            int i =4;
-            if (this.getHealth()>0 && spell.getName().equals("Accio")) {
-                this.gotonextChapter(i);
-            }else if(this.getHealth()>0){
-                System.out.println("Vous avez utilisé le mauvais sort!\n");
-                System.out.println("Vous devez maintenant affronter les deux boss ensemble");
-                this.fight(Boss.createDoubleBoss());
-                if (this.getHealth()>0){
-                    this.gotonextChapter(i);
-                }
-            }
-        }
+
         int damage = spell.getDamage();
         int dogdeChance = (int) (Math.random() * 101);
         int valeurRan = 100;
-        if(this.getHouse() == House.RAVENCLAW){
-            dogdeChance = (int) (Math.random()*91);
-        }
+        if(this.getHouse() == House.RAVENCLAW){dogdeChance = (int) (Math.random()*91);}
         if (dogdeChance < 0.65 * valeurRan) {
             System.out.println("Vous lancez " + spell.getName() + " et infligez " + damage + " de dégâts au " + ennemies.getName() + "\n");
             ennemies.takeDamage(this, damage);
-            if (ennemies.getHealth() < 0) {
-                this.drop(ennemies);
-            }
-        } if (dogdeChance > 0.65*valeurRan) {
-            System.out.println("Vous avez raté votre sort");
+            if (ennemies.getHealth() < 0) {this.drop(ennemies);}
+        } if (dogdeChance > 0.65*valeurRan) {System.out.println("Vous avez raté votre sort");
+
         }
+
     }
 private void dodgeset(){
     setDogdeChance(dogdeChance + 10);
@@ -320,7 +329,8 @@ private void dodgeset(){
                 }
                 int spellIndex = scanner.nextInt() -1;
                 Spell spell = knownSpells.get(spellIndex);
-                spell.spellStat(5);
+                spell.setDamage(getDamage() + 5);
+
             }
             case 3 -> dodgeset();
             default -> upStats();
@@ -414,11 +424,27 @@ private void dodgeset(){
         System.out.println("Trouvez Portkey et utilisez Accio pour pouvoir vous enfuir !");
         Wait.wait(2000);
         System.out.println("Vous avez trouvé Portkey");
-        ChapterFourIsOk = true;
+
         this.fight(Enemy.creatPorkey());
+        System.out.println("Cliquez sur le 2 pour continuer :\n2. Continuer");
+        Scanner scanner = new Scanner(System.in);
+        int spellIndex = scanner.nextInt() - 1;
+        Spell spell = knownSpells.get(spellIndex);
 
+        int i =4;
+        if (this.getHealth()>0 && spell.getName().equals("Accio")) {
+            this.gotonextChapter(i);
 
+        }if(this.getHealth()>0){
+            System.out.println("Vous avez utilisé le mauvais sort!\n");
+            System.out.println("Vous devez maintenant affronter les deux boss ensemble");
+            this.fight(Boss.createDoubleBoss());
+            if (this.getHealth()>0){this.gotonextChapter(i);}
+        }
     }
+
+
+
 
     public void ChapterFive(){
         System.out.println("<"+longTrait +"Chapitre 5" + longTrait +">\n");
@@ -453,15 +479,23 @@ private void dodgeset(){
         Wait.wait(2000);
         System.out.println("Un ennemi apparaît !\n");
         Wait.wait(2000);
-        this.fight(Boss.createDolores());
-        int i= 6;
-        if (this.getHealth()>0){
-            this.gotonextChapter(i);
-        }
-        else {
-            System.out.println("Vous avez perdu !");
-        }
 
+        this.fight(Boss.createMangemorts());
+        System.out.println("CLiquez sur 4 pour contiuer : \n4. Continuer");
+        Scanner scanner = new Scanner(System.in);
+        int spellIndex = scanner.nextInt() - 1;
+        Spell spell = knownSpells.get(spellIndex);
+        int i =6;
+        if (this.getHealth()>0 && spell.getName().equals("Sectumsempra")) {
+            System.out.println("Vous vous êtes associés aux Mangemorts");
+            this.gotonextChapter(i);
+        }else if(this.getHealth()>0){
+            System.out.println("Attention le combat commence");
+            this.fight(Boss.createMangemorts());
+            this.fight(Boss.createMangemorts());
+            this.fight(Boss.createMangemorts());
+            if (this.getHealth()>0){this.gotonextChapter(i);}
+        }
     }
     public void ChapterSeven(){
         System.out.println("<"+longTrait +"Chapitre 7" + longTrait +">\n");
@@ -473,8 +507,12 @@ private void dodgeset(){
                 """);
 
         Wait.wait(2000);
-        System.out.println("Un ennemi apparaît !\n");
+        System.out.println("Voldemort et Bellatrix apparaîssent !\n");
         Wait.wait(2000);
+        ChapterSevenIsOk = true;
+        this.fight(Boss.createVoledemort());
+        this.fight(Boss.createBella());
+
     }
 
 }

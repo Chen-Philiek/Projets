@@ -5,9 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@Getter @Setter
 public abstract class AbstractEnemy extends Character {
-    @Getter @Setter private int damage;
-    @Getter @Setter private int health;
+     private int damage;
+     private int health;
+
 
     public AbstractEnemy(String name, int damage, int health) {
         this.setName(name);
@@ -25,6 +27,7 @@ public abstract class AbstractEnemy extends Character {
         }
 
     }
+
 
     public void takeDamage(Wizard wizard ,int damage) {
         if (wizard.getHouse()== House.SLYTHERIN){

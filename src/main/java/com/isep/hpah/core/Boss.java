@@ -36,6 +36,10 @@ public class Boss extends AbstractEnemy {
         Boss Bellatrix = new Boss("Bellatrix Lestrange",32,62,BossLevel.BELLATRIX);
         return Bellatrix;
     }
+    public static Boss createMangemorts(){
+        Boss Mangemorts = new Boss("Mangemorts",15, 30,BossLevel.MANGEMORTS);
+        return Mangemorts;
+    }
 
 
     @Override
