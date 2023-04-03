@@ -187,6 +187,8 @@ public class Wizard extends Character{
                             Vous deux sorciers se regarde, interloqués. Vous vous rendez compte que vos baguettes magiques sont désormais liées l'une à l'autre, et qu'ils ne peuvent plus l'utiliser l'une contre l'autre.
 
                             Après un moment de réflexion, Vous et Voldemort décident de mettre fin à leur rivalité. Vous vous éloignez, chacun de leur côté, sachant que la magie leur réserve encore bien des surprises imprévisibles.""");
+
+                    System.out.println("Vous êtes maintenant diplômé !");
                     System.exit(0);
 
                 }else{
@@ -497,6 +499,12 @@ private void dodgeset(){
         ChapterSevenIsOk = true;
         this.fight(Boss.createVoledemort());
         this.fight(Boss.createBella());
+        if (this.getHealth()>0){
+            System.out.println("Vous êtes maintenant diplômé !");
+        }
+        else{
+            System.out.println("Malheuresement vous êtes mort à la dernière année..");
+        }
 
     }
 
