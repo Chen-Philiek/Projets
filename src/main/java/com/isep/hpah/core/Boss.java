@@ -37,7 +37,7 @@ public class Boss extends AbstractEnemy {
         return Bellatrix;
     }
     public static Boss createMangemorts(){
-        Boss Mangemorts = new Boss("Mangemorts",15, 30,BossLevel.MANGEMORTS);
+        Boss Mangemorts = new Boss("Mangemorts",15, 21,BossLevel.MANGEMORTS);
         return Mangemorts;
     }
 

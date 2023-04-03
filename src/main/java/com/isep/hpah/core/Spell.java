@@ -52,7 +52,7 @@ public class Spell extends AbstractSpell{
 
         return switch (this.name) {
             case "WingardiumLeviosa" -> 20;
-            case "Sectumsempra" -> 7;
+            case "Sectumsempra" -> 21;
             case "Incendio" -> 9;
             case "Accio" -> 22;
             case "GryffindorSword" -> 24;

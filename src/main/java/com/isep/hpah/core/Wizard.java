@@ -37,15 +37,14 @@ public class Wizard extends Character{
 
     public void start(AbstractEnemy ennemies) {
 
-        System.out.println("Choose your action\uD83E\uDD14:\n1. Cast spell\n2. Use potion\n3. Flee");
+        System.out.println("Choisissez l'action voulu\uD83E\uDD14:\n1. Lancer un sort\n2. Utiliser une potion\n3. M'enfuir");
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
         switch (action) {
             case 1 -> this.castSpell(ennemies);
             case 2 -> this.usePotion();
             case 3 -> this.flee(ennemies);
-           // case 4 -> this.forbiddSpell(ennemies);
-            default -> System.out.println("Invalid action");
+            default -> System.out.println("Action invalide");
         }
     }
 
@@ -103,30 +102,15 @@ public class Wizard extends Character{
         }
         return true;
     }
-    // Forbidden spell
-   /* public void forbiddSpell(AbstractEnemy ennemies){
-        List<ForbiddenSpell> forbiddenSpells = this.getForbiddenSpells();
-        if (forbiddenSpells.isEmpty()){
-            System.out.println("You don't have any forbiddenSpell !❌");
-            return;
-        }
-        System.out.println("Choose the forbbidenSpell to use \uD83E\uDD14:");
-        for (int i = 0; i < forbiddenSpells.size(); i++) {
-            System.out.println((i + 1) + ". " + forbiddenSpells.get(i).getName() + " (" + forbiddenSpells.get(i).getDamage() + " heal)");
-        }
 
-
-    }
-
-    */
     //Potion part
     public void usePotion() {
         List<Potion> potions = this.getPotions();
         if (potions.isEmpty()) {
-            System.out.println("You don't have any potion!❌");
+            System.out.println("Vous n'avez aucune potion dans l'inventaire !❌");
             return;
         }
-        System.out.println("Choose the potion to use \uD83E\uDD14:");
+        System.out.println("Choisissez la potion à utiliser \uD83E\uDD14:");
         for (int i = 0; i < potions.size(); i++) {
             System.out.println((i + 1) + ". " + potions.get(i).getName() + " (" + potions.get(i).getHealAmount() + " heal)");
         }
@@ -176,7 +160,7 @@ public class Wizard extends Character{
 
     public void castSpell(AbstractEnemy ennemies) {
         List<Spell> knownSpells = this.getKnownSpells();
-        System.out.println("Choose the spell to cast:");
+        System.out.println("Choisissez le sort à jeter :");
         for (int b = 0; b < knownSpells.size(); b++) {
             System.out.println((b + 1) + ". " + knownSpells.get(b).getName() + " (" + knownSpells.get(b).getDamage() + " damage)");
 
@@ -207,7 +191,7 @@ public class Wizard extends Character{
 
                 }else{
                     Status = this.wizardturn(ennemies);
-                    ennemies.enemyturn(this);
+                    ennemies.voldturn(this);
 
 
                 }
@@ -265,7 +249,7 @@ public class Wizard extends Character{
     //Apprentissage de nouveau sort
     private void learnSpell() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a new spell or other \uD83E\uDD14: \n1.Accio (Recommandé si vous n'êtes pas de Gryffindor)\n2.GryffindorSword \n3.Expecto Patronum (efficace face aux détraqueurs !)");
+        System.out.println("Choisissez un nouveau sort \uD83E\uDD14: \n1.Accio (Recommandé si vous n'êtes pas de Gryffindor)\n2.GryffindorSword \n3.Expecto Patronum (efficace face aux détraqueurs !)");
         int numberSpell = scanner.nextInt();
         Spell chosenSpell = null;
         switch (numberSpell) {
@@ -275,12 +259,12 @@ public class Wizard extends Character{
             default -> learnSpell();
         }
         assert chosenSpell != null;
-        System.out.println("You chose the : " + chosenSpell.getName());
+        System.out.println("Vous avez choisis : " + chosenSpell.getName());
         this.getKnownSpells().add(chosenSpell);
     }
     private void learnSpell1() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose a new spell or other \uD83E\uDD14: \n 1.Sectumsempra");
+        System.out.println("Choisissez un nouveau sort \uD83E\uDD14: \n 1.Sectumsempra");
         int numberSpell = scanner.nextInt();
         Spell chosenSpell = null;
         if (numberSpell == 1) {
@@ -288,7 +272,7 @@ public class Wizard extends Character{
         } else {
             learnSpell();
         }
-        System.out.println("You chose the : " + chosenSpell.getName());
+        System.out.println("Vous avez choisis : " + chosenSpell.getName());
         this.getKnownSpells().add(chosenSpell);
     }
     //Probabilité de rater son sort
@@ -312,7 +296,7 @@ public class Wizard extends Character{
     }
 private void dodgeset(){
     setDogdeChance(dogdeChance + 10);
-    System.out.println(" dodge chance :" + dogdeChance);
+    System.out.println(" Votre chance à augmenter de :" + dogdeChance);
     // Appel de la méthode spellStat pour mettre à jour les dégâts supplémentaires
 
 }
@@ -481,14 +465,15 @@ private void dodgeset(){
         Wait.wait(2000);
 
         this.fight(Boss.createMangemorts());
-        System.out.println("CLiquez sur 4 pour contiuer : \n4. Continuer");
+        System.out.println("CLiquez sur 4 pour voir la suite : \n4. Continuer");
         Scanner scanner = new Scanner(System.in);
         int spellIndex = scanner.nextInt() - 1;
         Spell spell = knownSpells.get(spellIndex);
         int i =6;
         if (this.getHealth()>0 && spell.getName().equals("Sectumsempra")) {
             System.out.println("Vous vous êtes associés aux Mangemorts");
-            this.gotonextChapter(i);
+            System.out.println("Vous êtes maintenant du côté de Voldemort ! Par conséquent vous ne pouvez pas être diplômé !");
+            System.exit(0);
         }else if(this.getHealth()>0){
             System.out.println("Attention le combat commence");
             this.fight(Boss.createMangemorts());
