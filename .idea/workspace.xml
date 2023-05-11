@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="6 chapters end">
+    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="GAME end">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/AbstractEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/AbstractEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Spell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +55,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -102,7 +100,14 @@
       <workItem from="1679303233611" duration="38076000" />
       <workItem from="1679645762590" duration="64113000" />
       <workItem from="1680032100190" duration="53803000" />
-      <workItem from="1680266405193" duration="4927000" />
+      <workItem from="1680266405193" duration="5241000" />
+      <workItem from="1680852622397" duration="24000" />
+      <workItem from="1682076591043" duration="81000" />
+      <workItem from="1682663601838" duration="115000" />
+      <workItem from="1682664295677" duration="49000" />
+      <workItem from="1682664443816" duration="3640000" />
+      <workItem from="1683620432719" duration="4798000" />
+      <workItem from="1683776065977" duration="745000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1678434394428</created>
@@ -209,7 +214,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680534535977</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="GAME end">
+      <created>1680542075256</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680542075256</updated>
+    </task>
+    <task id="LOCAL-00017" summary="GAME end">
+      <created>1680542246906</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680542246906</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +255,8 @@
     <MESSAGE value="next chapter" />
     <MESSAGE value="chapter four end" />
     <MESSAGE value="6 chapters end" />
-    <option name="LAST_COMMIT_MESSAGE" value="6 chapters end" />
+    <MESSAGE value="GAME end" />
+    <option name="LAST_COMMIT_MESSAGE" value="GAME end" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -249,7 +269,17 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java</url>
+          <line>248</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/HarrypotJava$App.ic" NAME="App Coverage Results" MODIFIED="1682667685607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
   </component>
 </project>

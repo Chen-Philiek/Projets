@@ -261,8 +261,13 @@ public class Wizard extends Character{
             default -> learnSpell();
         }
         assert chosenSpell != null;
-        System.out.println("Vous avez choisis : " + chosenSpell.getName());
-        this.getKnownSpells().add(chosenSpell);
+        if (this.getKnownSpells().contains(chosenSpell)) {
+            System.out.println("Le sort " + chosenSpell.getName() + " est déjà connu.");
+            learnSpell(); // Sortie de la méthode si le sort est déjà connu
+        }else {
+            System.out.println("Vous avez choisis : " + chosenSpell.getName());
+            this.getKnownSpells().add(chosenSpell);
+        }
     }
     private void learnSpell1() {
         Scanner scanner = new Scanner(System.in);
@@ -334,6 +339,7 @@ private void dodgeset(){
         Wait.wait(2000);
         this.fight(Enemy.createTroll());
         int i = 1;
+        this.gotonextChapter(i);
         if (this.getHealth()>0) {
             this.upStats();
             this.gotonextChapter(i);
@@ -361,9 +367,8 @@ private void dodgeset(){
         Wait.wait(2000);
         this.fight(Boss.createBasilik());
         int i=2;
+        this.gotonextChapter(i);
         if (this.getHealth()>0) {
-
-            //on ajoute ici le code pour demander quel attribut monté en pts
             this.gotonextChapter(i);
         }else{
             System.out.println("Vous avez perdu !");
@@ -389,6 +394,7 @@ private void dodgeset(){
         Wait.wait(2000);
         this.fight(Boss.createDetraqueurs());
         int i =3;
+        this.gotonextChapter(i);
         if (this.getHealth()>0) {
             this.upStats();
             this.gotonextChapter(i);
@@ -411,21 +417,22 @@ private void dodgeset(){
         Wait.wait(2000);
         System.out.println("Vous avez trouvé Portkey");
 
+        int i =4;
         this.fight(Enemy.creatPorkey());
-        System.out.println("Cliquez sur le 2 pour continuer :\n2. Continuer");
         Scanner scanner = new Scanner(System.in);
         int spellIndex = scanner.nextInt() - 1;
         Spell spell = knownSpells.get(spellIndex);
-
-        int i =4;
-        if (this.getHealth()>0 && spell.getName().equals("Accio")) {
-            this.gotonextChapter(i);
-
-        }if(this.getHealth()>0){
+        System.out.println("Cliquez sur le 2 pour continuer :\n2. Continuer");
+        if (!spell.getName().equals("Accio")) {
             System.out.println("Vous avez utilisé le mauvais sort!\n");
             System.out.println("Vous devez maintenant affronter les deux boss ensemble");
             this.fight(Boss.createDoubleBoss());
-            if (this.getHealth()>0){this.gotonextChapter(i);}
+            if (this.getHealth() > 0) {
+                this.gotonextChapter(i);
+            }
+
+        } else {
+            this.gotonextChapter(i);
         }
     }
 
@@ -474,12 +481,9 @@ private void dodgeset(){
         int i =6;
         if (this.getHealth()>0 && spell.getName().equals("Sectumsempra")) {
             System.out.println("Vous vous êtes associés aux Mangemorts");
-            System.out.println("Vous êtes maintenant du côté de Voldemort ! Par conséquent vous ne pouvez pas être diplômé !");
-            System.exit(0);
+            this.gotonextChapter(i);
         }else if(this.getHealth()>0){
             System.out.println("Attention le combat commence");
-            this.fight(Boss.createMangemorts());
-            this.fight(Boss.createMangemorts());
             this.fight(Boss.createMangemorts());
             if (this.getHealth()>0){this.gotonextChapter(i);}
         }
