@@ -4,9 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="GAME end">
+    <list default="true" id="8dc5ff42-809e-4d0d-ad4a-2d6430e3958e" name="Changes" comment="LearnSpell changes">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/AbstractEnemyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/AbstractSpellTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/BossTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/CharacterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/CoreTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/EnemyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/HouseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/PetTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/PotionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/SpellTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/WaitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/WandTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/isep/hpah/core/WizardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Level.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +30,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -43,29 +63,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.isep.hpah.core" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.isep.hpah.core" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.isep.hpah.core.App" />
       <module name="HarrypotJava" />
@@ -79,9 +107,74 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpellTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HarrypotJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isep.hpah.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isep.hpah.core" />
+      <option name="MAIN_CLASS_NAME" value="com.isep.hpah.core.SpellTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpellTest.getDescription" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HarrypotJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isep.hpah.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isep.hpah.core" />
+      <option name="MAIN_CLASS_NAME" value="com.isep.hpah.core.SpellTest" />
+      <option name="METHOD_NAME" value="getDescription" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HarrypotJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isep.hpah.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isep.hpah.core" />
+      <option name="MAIN_CLASS_NAME" value="com.isep.hpah.core.WaitTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HarrypotJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isep.hpah.core.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.isep.hpah.core" />
+      <option name="MAIN_CLASS_NAME" value="com.isep.hpah.core.WandTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.WandTest" />
+        <item itemvalue="JUnit.WaitTest" />
+        <item itemvalue="JUnit.SpellTest" />
+        <item itemvalue="JUnit.SpellTest.getDescription" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +200,8 @@
       <workItem from="1682664295677" duration="49000" />
       <workItem from="1682664443816" duration="3640000" />
       <workItem from="1683620432719" duration="4798000" />
-      <workItem from="1683776065977" duration="745000" />
+      <workItem from="1683776065977" duration="1640000" />
+      <workItem from="1683792740193" duration="6149000" />
     </task>
     <task id="LOCAL-00001" summary="new">
       <created>1678434394428</created>
@@ -228,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680542246906</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="LearnSpell changes">
+      <created>1683777065781</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683777065781</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +357,8 @@
     <MESSAGE value="chapter four end" />
     <MESSAGE value="6 chapters end" />
     <MESSAGE value="GAME end" />
-    <option name="LAST_COMMIT_MESSAGE" value="GAME end" />
+    <MESSAGE value="LearnSpell changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="LearnSpell changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,15 +372,51 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/isep/hpah/core/Wizard.java</url>
-          <line>248</line>
+          <url>file://$PROJECT_DIR$/src/test/java/com/isep/hpah/core/AbstractEnemyTest.java</url>
+          <line>80</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/HarrypotJava$WaitTest.ic" NAME="WaitTest Coverage Results" MODIFIED="1683832705486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/HarrypotJava$App.ic" NAME="App Coverage Results" MODIFIED="1682667685607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$BossTest.ic" NAME="BossTest Coverage Results" MODIFIED="1683795161836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$SpellTest.ic" NAME="SpellTest Coverage Results" MODIFIED="1683832575501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$PotionTest.ic" NAME="PotionTest Coverage Results" MODIFIED="1683832229423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$AbstractSpellTest.ic" NAME="AbstractSpellTest Coverage Results" MODIFIED="1683794488840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$CoreTest.ic" NAME="CoreTest Coverage Results" MODIFIED="1683831610730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$EnemyTest.ic" NAME="EnemyTest Coverage Results" MODIFIED="1683831862134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$PetTest.ic" NAME="PetTest Coverage Results" MODIFIED="1683832137162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$AbstractEnemyTest.ic" NAME="AbstractEnemyTest Coverage Results" MODIFIED="1683793854272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$HouseTest.ic" NAME="HouseTest Coverage Results" MODIFIED="1683832021356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$SpellTest_getDescription.ic" NAME="SpellTest.getDescription Coverage Results" MODIFIED="1683832517232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.isep.hpah.core.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HarrypotJava$CharacterTest.ic" NAME="CharacterTest Coverage Results" MODIFIED="1683831505052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.isep.hpah.core.*</FILTER>
     </SUITE>
   </component>

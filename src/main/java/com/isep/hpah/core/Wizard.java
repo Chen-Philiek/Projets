@@ -204,18 +204,14 @@ public class Wizard extends Character{
     }
 //Le wizard prend du damage
     public void takeDamage(int damage1) {
-
         this.setHealth(getHealth() - damage1);
-
         System.out.println(this.getName() + " prend " + damage1 + " points de dégâts !");
         System.out.println("-----------------------------------------------");
         System.out.println("|      Il vous reste :" + getHealth() + " points de vie !     |");
         System.out.println("-----------------------------------------------");
-
         if (getHealth() <= 0) {
             this.setAlive(false);
             System.out.println(this.getName() + " est mort !");
-
         }
     }
 
@@ -419,10 +415,11 @@ private void dodgeset(){
 
         int i =4;
         this.fight(Enemy.creatPorkey());
+        System.out.println("Cliquez sur le 2 pour continuer :\n2. Continuer");
         Scanner scanner = new Scanner(System.in);
         int spellIndex = scanner.nextInt() - 1;
         Spell spell = knownSpells.get(spellIndex);
-        System.out.println("Cliquez sur le 2 pour continuer :\n2. Continuer");
+
         if (!spell.getName().equals("Accio")) {
             System.out.println("Vous avez utilisé le mauvais sort!\n");
             System.out.println("Vous devez maintenant affronter les deux boss ensemble");

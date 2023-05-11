@@ -11,6 +11,9 @@ public class Boss extends AbstractEnemy {
         this.typeboss = typeboss;
 
     }
+    public BossLevel getTypeboss() {
+        return typeboss;
+    }
     public static Boss createBasilik(){
         Boss Basilik = new Boss("Basilic", 25,55,BossLevel.BASILIC);
         return Basilik;

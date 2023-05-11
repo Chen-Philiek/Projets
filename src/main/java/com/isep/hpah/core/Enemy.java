@@ -9,6 +9,9 @@ public class Enemy extends AbstractEnemy {
         super(name, damage, health);
         this.type = type;
     }
+    public EnemyType getType() {
+        return type;
+    }
   public static Enemy createTroll(){
         Enemy Troll = new Enemy("TROLL", 10,30,EnemyType.TROLL);
        return Troll;
