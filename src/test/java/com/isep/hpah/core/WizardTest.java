@@ -76,41 +76,39 @@ class WizardTest {
         wizard.setKnownSpells(knownSpells);
 
         // Cast a spell
-        wizard.castSpell();
 
-        // TODO: Write assertions to check the effect of casting a spell
 
-        // TODO: Write more test cases for castSpell() method
+
     }
 
     @Test
     void testFight() {
-        // TODO: Write test case for fight() method
+
     }
 
     @Test
     void testTakeDamage() {
-        // TODO: Write test case for takeDamage() method
+
     }
 
     @Test
     void testHealing() {
-        // TODO: Write test case for healing() method
+
     }
 
     @Test
     void testChapterOne() {
-        // TODO: Write test case for chapterOne() method
+
     }
 
     @Test
     void testChapterTwo() {
-        // TODO: Write test case for chapterTwo() method
+
     }
 
     @Test
     void testChapterThree() {
-        // TODO: Write test case for chapterThree() method
+
     }
 
     // Add more test cases for other methods

@@ -191,11 +191,9 @@ public class Wizard extends Character{
                     System.out.println("Vous êtes maintenant diplômé !");
                     System.exit(0);
 
-                }else{
+                }else if (ChapterSevenIsOk){
                     Status = this.wizardturn(ennemies);
                     ennemies.voldturn(this);
-
-
                 }
 
             }else{return;}
@@ -209,6 +207,19 @@ public class Wizard extends Character{
         System.out.println("-----------------------------------------------");
         System.out.println("|      Il vous reste :" + getHealth() + " points de vie !     |");
         System.out.println("-----------------------------------------------");
+        if (getHealth() <= 0) {
+            this.setAlive(false);
+            System.out.println(this.getName() + " est mort !");
+        }
+    }
+    public void takeDamageAv(int damageavada) {
+        this.setHealth(getHealth() - damageavada);
+        System.out.println(this.getName() + " prend " + damageavada + " points de dégâts !");
+        if (this.getHealth() <= 0) {
+            System.out.println("-----------------------------------------------");
+            System.out.println("|      Il vous reste :" + 0 + " points de vie !        |");
+            System.out.println("-----------------------------------------------");
+        }
         if (getHealth() <= 0) {
             this.setAlive(false);
             System.out.println(this.getName() + " est mort !");
@@ -257,10 +268,28 @@ public class Wizard extends Character{
             default -> learnSpell();
         }
         assert chosenSpell != null;
+
         if (this.getKnownSpells().contains(chosenSpell)) {
             System.out.println("Le sort " + chosenSpell.getName() + " est déjà connu.");
             learnSpell(); // Sortie de la méthode si le sort est déjà connu
-        }else {
+        } else if (this.getHouse() == House.GRYFFINDOR) {
+            if (chosenSpell.getName().equals("Accio") || chosenSpell.getName().equals("ExpectoPatronum")) {
+                System.out.println("Vous êtes de Gryffindor, vous ne pouvez pas choisir ce sort");
+                learnSpell();
+            } else {
+                System.out.println("Vous avez choisis : " + chosenSpell.getName());
+                this.getKnownSpells().add(chosenSpell);
+            }
+        }
+        if (this.getHouse() != House.GRYFFINDOR) {
+            if (chosenSpell.getName().equals("GryffindorSword")) {
+                System.out.println("Vous n'êtes pas de Gryffindor, vous ne pouvez pas choisir ce sort");
+                learnSpell();
+            } else {
+                System.out.println("Vous avez choisis : " + chosenSpell.getName());
+                this.getKnownSpells().add(chosenSpell);
+            }
+        } else {
             System.out.println("Vous avez choisis : " + chosenSpell.getName());
             this.getKnownSpells().add(chosenSpell);
         }
@@ -381,6 +410,7 @@ private void dodgeset(){
                 entendu parler d’un sort pour les mettre en fuite... Expect... Expecta... Ah oui, Expectro Patronum.
                 Votre objecif est d’apprendre le sort, puis de l’utiliser pour vaincre les Détraqueurs.
                 """);
+        this.upStats();
         Wait.wait(2000);
         this.learnSpell();
         System.out.println("Un ennemi apparaît !\n");

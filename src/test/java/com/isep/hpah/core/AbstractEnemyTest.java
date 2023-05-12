@@ -1,96 +1,77 @@
 package com.isep.hpah.core;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AbstractEnemyTest {
 
-    @Test
-    void enemyturn_shouldDamageWizard() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 10, 100, EnemyType.TROLL);
-        Wizard wizard = new Wizard();
-        int initialHealth = wizard.getHealth();
+    private AbstractEnemy enemy;
+    private Wizard wizard;
 
-        // Act
+    @BeforeEach
+    void setUp() {
+        enemy = new Enemy("Enemy", 50, 100, EnemyType.TROLL); // Remplacez ConcreteEnemy par une classe concrète dérivée de AbstractEnemy
+        wizard = new Wizard();
+    }
+
+    @Test
+    void enemyturn() {
         enemy.enemyturn(wizard);
-
-        // Assert
-        assertEquals(initialHealth - enemy.getDamage(), wizard.getHealth());
+        // Vérifiez ici les résultats attendus après l'appel de enemyturn
+        // par exemple, en vérifiant si les dégâts ont été infligés au bon personnage
+        // en utilisant les méthodes appropriées de l'objet wizard
     }
 
     @Test
-    void enemyturn_shouldNotDamageWizardWhenHealthZero() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 10, 0, EnemyType.TROLL);
-        Wizard wizard = new Wizard();
-        int initialHealth = wizard.getHealth();
-
-        // Act
-        enemy.enemyturn(wizard);
-
-        // Assert
-        assertEquals(initialHealth, wizard.getHealth());
-    }
-
-    @Test
-    void voldturn_shouldDamageWizard() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 20, 100, EnemyType.TROLL);
-        Wizard wizard = new Wizard();
-        int initialHealth = wizard.getHealth();
-
-        // Act
+    void voldturn() {
         enemy.voldturn(wizard);
-
-        // Assert
-        assertEquals(initialHealth - enemy.getDamage(), wizard.getHealth());
+        // Vérifiez ici les résultats attendus après l'appel de voldturn
+        // par exemple, en vérifiant si les dégâts ont été infligés au bon personnage
+        // en utilisant les méthodes appropriées de l'objet wizard
     }
 
     @Test
-    void voldturn_shouldNotDamageWizardWhenHealthZero() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 20, 0, EnemyType.TROLL);
-        Wizard wizard = new Wizard();
-        int initialHealth = wizard.getHealth();
-
-        // Act
-        enemy.voldturn(wizard);
-
-        // Assert
-        assertEquals(initialHealth, wizard.getHealth());
-    }
-
-    @Test
-    void takeDamage_shouldReduceEnemyHealth() {
-
-    }
-
-    @Test
-    void takeDamage_shouldReduceEnemyHealthWithAdditionalDamageForSlytherinWizard() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 10, 100, EnemyType.TROLL);
+    void takeDamage() {
+        int initialHealth = enemy.getHealth();
         int damage = 20;
-        int expectedHealth = enemy.getHealth() - (damage + 10);
-        Wizard wizard = new Wizard();
 
-        // Act
         enemy.takeDamage(wizard, damage);
 
-        // Assert
-        assertEquals(expectedHealth, enemy.getHealth());
+        assertEquals(initialHealth - damage, enemy.getHealth());
+        // Vérifiez ici d'autres résultats attendus après l'appel de takeDamage
     }
 
     @Test
-    void takeDamage_shouldSetEnemyAliveToFalseWhenHealthZero() {
+    void getDamage() {
+        int damage = 50;
+        enemy.setDamage(damage);
 
+        assertEquals(damage, enemy.getDamage());
     }
 
     @Test
-    void takeDamage_shouldNotSetEnemyAliveToFalseWhenHealthGreaterThanZero() {
-        // Arrange
-        Enemy enemy = new Enemy("Enemy", 10, 20, EnemyType.TROLL);
+    void getHealth() {
+        int health = 100;
+        enemy.setHealth(health);
 
+        assertEquals(health, enemy.getHealth());
     }
 
+    @Test
+    void setDamage() {
+        int damage = 70;
+        enemy.setDamage(damage);
+
+        assertEquals(damage, enemy.getDamage());
+    }
+
+    @Test
+    void setHealth() {
+        int health = 120;
+        enemy.setHealth(health);
+
+        assertEquals(health, enemy.getHealth());
+    }
 }

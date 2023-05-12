@@ -30,10 +30,10 @@ public abstract class AbstractEnemy extends Character {
 
     public void voldturn(Wizard wizard){
         if (this.getHealth() > 0){
-            int damageavada = this.getDamage();
-            System.out.println("C'est au tour du " + this.getName() + "!");
-            System.out.println("Le " + this.getName() + " vous attaque avec Avada kadavra et vous inflige : " + damageavada+((wizard.getHealth()-damageavada) -1)   + " de dégâts");
-            wizard.takeDamage(damageavada);
+            int damageavada = 500;
+            System.out.println("C'est au tour de " + this.getName() + "!");
+            System.out.println("Le boss " + this.getName() + " vous attaque avec Avada kadavra et vous inflige : " + damageavada + " de dégâts");
+            wizard.takeDamageAv(damageavada);
         }
     }
 
